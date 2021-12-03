@@ -12,33 +12,32 @@ using Tetris.Controllers;
 
 namespace Tetris
 {
-    public partial class Form1 : Form
-    {
-        
+    public partial class Form1 : Form { 
+        public Timer time = new Timer();
         public Form1()
         {
             InitializeComponent();
             this.KeyUp += new KeyEventHandler(keyFunc);
+            
             Init();
         }
-
         public void Init()
         {
+            
+            time.Interval = 300;
             TetrisControl.size = 25;
             TetrisControl.score = 0;
             TetrisControl.linesRemoved = 0;
             TetrisControl.currentShape = new Shape(3, 0);
-            TetrisControl.Interval = 300;
+            TetrisControl.Interval = time.Interval;
             lbScore.Text = TetrisControl.score.ToString();
             lbLine.Text = TetrisControl.linesRemoved.ToString();
 
-           
 
-            timer1.Interval = TetrisControl.Interval;
+            timer1.Interval = time.Interval;
+
             timer1.Tick += new EventHandler(update);
             timer1.Start();
-            
-
             Invalidate();
         }
 
@@ -77,10 +76,14 @@ namespace Tetris
                         Invalidate();
                     }
                     break;
+                case Keys.P:
+                    PauseGame();
+                    break;
+
             }
         }
 
-        
+
         private void update(object sender, EventArgs e)
         {
             TetrisControl.ResetArea();
@@ -91,9 +94,9 @@ namespace Tetris
             else
             {
                 TetrisControl.Merge();
-                TetrisControl.SliceMap(lbScore,lbLine);
+                TetrisControl.SliceMap(lbScore, lbLine);
                 timer1.Interval = TetrisControl.Interval;
-                TetrisControl.currentShape.ResetShape(3,0);
+                TetrisControl.currentShape.ResetShape(3, 0);
                 if (TetrisControl.Collide())
                 {
                     TetrisControl.ClearMap();
@@ -123,9 +126,10 @@ namespace Tetris
             Init();
         }
 
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -141,6 +145,52 @@ namespace Tetris
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void lbStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void PauseGame()
+        {
+            if (timer1.Enabled)
+            {
+                timer1.Stop();
+            }
+            else
+            {
+                timer1.Start();
+            }
+        }
+
+        private void startGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pressedButton = sender as ToolStripMenuItem;
+            if (timer1.Enabled)
+            {
+                pressedButton.Text = "Start";
+                timer1.Stop();
+            }
+            else
+            {
+                pressedButton.Text = "Pause";
+                timer1.Start();
+            }
+        }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Tick -= new EventHandler(update);
+            timer1.Stop();
+            TetrisControl.ClearMap();
+            Init();
         }
     }
 }
