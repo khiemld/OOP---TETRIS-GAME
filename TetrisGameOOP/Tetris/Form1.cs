@@ -192,5 +192,11 @@ namespace Tetris
             TetrisControl.ClearMap();
             Init();
         }
+
+        private void levelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Music a = new Music();
+            a.Show();
+        }
     }
 }
