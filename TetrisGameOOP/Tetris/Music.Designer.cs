@@ -33,6 +33,7 @@ namespace Tetris
             this.buttonPlay = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.buttonAddMusic = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxMusic
@@ -41,8 +42,9 @@ namespace Tetris
             this.listBoxMusic.ItemHeight = 16;
             this.listBoxMusic.Location = new System.Drawing.Point(48, 36);
             this.listBoxMusic.Name = "listBoxMusic";
-            this.listBoxMusic.Size = new System.Drawing.Size(364, 116);
+            this.listBoxMusic.Size = new System.Drawing.Size(363, 116);
             this.listBoxMusic.TabIndex = 0;
+            this.listBoxMusic.SelectedIndexChanged += new System.EventHandler(this.listBoxMusic_SelectedIndexChanged);
             // 
             // buttonPlay
             // 
@@ -56,7 +58,7 @@ namespace Tetris
             // 
             // buttonPause
             // 
-            this.buttonPause.Location = new System.Drawing.Point(182, 172);
+            this.buttonPause.Location = new System.Drawing.Point(183, 172);
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.Size = new System.Drawing.Size(95, 38);
             this.buttonPause.TabIndex = 2;
@@ -74,18 +76,31 @@ namespace Tetris
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // buttonAddMusic
+            // 
+            this.buttonAddMusic.Location = new System.Drawing.Point(317, 36);
+            this.buttonAddMusic.Name = "buttonAddMusic";
+            this.buttonAddMusic.Size = new System.Drawing.Size(94, 116);
+            this.buttonAddMusic.TabIndex = 4;
+            this.buttonAddMusic.Text = "Add new songs";
+            this.buttonAddMusic.UseVisualStyleBackColor = true;
+            this.buttonAddMusic.Click += new System.EventHandler(this.buttonAddMusic_Click);
+            // 
             // Music
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 238);
+            this.Controls.Add(this.buttonAddMusic);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonPause);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.listBoxMusic);
             this.Name = "Music";
             this.Text = "Music";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Music_FormClosing);
             this.Load += new System.EventHandler(this.Music_Load);
+            this.Leave += new System.EventHandler(this.Music_Leave);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +111,6 @@ namespace Tetris
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Button buttonPause;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.Button buttonAddMusic;
     }
 }

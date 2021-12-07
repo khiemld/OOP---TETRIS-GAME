@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
+
 namespace Tetris
 {
     public partial class Music : Form
     {
-        WindowsMediaPlayer music = new WindowsMediaPlayer();
+        public WindowsMediaPlayer music = new WindowsMediaPlayer();
         public Music()
         {
             InitializeComponent();
@@ -62,5 +63,41 @@ namespace Tetris
         {
             music.controls.stop();
         }
+
+        string[] paths, files;
+        private void listBoxMusic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxMusic.SelectedIndex > 2)
+            {
+                music.URL = paths[listBoxMusic.SelectedIndex - 3];
+            }
+        }
+
+        private void Music_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Music_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            music.controls.stop();
+        }
+
+        private void buttonAddMusic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = true;
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                files = ofd.SafeFileNames;
+                paths = ofd.FileNames;
+                for(int i = 0; i < files.Length; i++)
+                {
+                    listBoxMusic.Items.Add(files[i]); 
+                }
+            }
+            buttonAddMusic.Visible = false;
+        }
     }
 }
+
