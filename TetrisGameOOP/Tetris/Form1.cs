@@ -12,7 +12,8 @@ using Tetris.Controllers;
 
 namespace Tetris
 {
-    public partial class Form1 : Form { 
+    public partial class Form1 : Form 
+    { 
         public Timer time = new Timer();
         public Form1()
         {
