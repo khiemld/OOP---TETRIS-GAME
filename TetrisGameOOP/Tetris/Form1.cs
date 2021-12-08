@@ -18,8 +18,8 @@ namespace Tetris
         {
             InitializeComponent();
             this.KeyUp += new KeyEventHandler(keyFunc);
-            
             Init();
+            PauseGame();
         }
         public void Init()
         {
