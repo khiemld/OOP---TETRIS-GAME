@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tetris.Controllers;
+using System.Drawing.Drawing2D;
 
 namespace Tetris
 {
@@ -113,6 +114,9 @@ namespace Tetris
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
+            Graphics g = e.Graphics;
+            Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+            LinearGradientBrush brush = new LinearGradientBrush(rect, Color.Red, Color.White, LinearGradientMode.Vertical);
             TetrisControl.DrawGrid(e.Graphics);
             TetrisControl.DrawMap(e.Graphics);
             SolidBrush blueBrush = new SolidBrush(Color.White);
@@ -198,6 +202,67 @@ namespace Tetris
         {
             Music a = new Music();
             a.Show();
+        }
+
+        private void NewGame()
+        {
+            timer1.Tick -= new EventHandler(update);
+            timer1.Stop();
+            TetrisControl.ClearMap();
+            Init();
+        }
+
+        private void level0ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            lblLevel.Text = "0";
+            timer1.Interval = 800;
+            TetrisControl.Interval = 800;
+        }
+
+        private void level1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            lblLevel.Text = "1";
+            timer1.Interval = 700;
+            TetrisControl.Interval = 700;
+        }
+
+        private void level2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            lblLevel.Text = "2";
+            timer1.Interval = 600;
+            TetrisControl.Interval = 600;
+        }
+
+        private void level3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            lblLevel.Text = "3";
+            timer1.Interval = 500;
+            TetrisControl.Interval = 500;
+        }
+
+        private void level4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            lblLevel.Text = "4";
+            timer1.Interval = 400;
+            TetrisControl.Interval = 400;
+        }
+
+        private void level5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            lblLevel.Text = "5";
+            timer1.Interval = 300;
+            TetrisControl.Interval = 300;
+        }
+
+        private void lbLine_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
