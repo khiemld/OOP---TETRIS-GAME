@@ -10,12 +10,13 @@ namespace Tetris.Controllers
 {
     public static class TetrisControl
     {
-        public static Shape currentShape;
+        public static Tetromino currentShape;
         public static int size;
         public static int[,] map = new int[16, 8];
         public static int linesRemoved;
         public static int score;
         public static int Interval;
+
         public static void ShowNextShape(Graphics e) //Hiển thị Tetromino tiếp theo
         {
             for (int i = 0; i < currentShape.SizeNextMatrix; i++)
@@ -137,11 +138,6 @@ namespace Tetris.Controllers
             }
             linesRemoved += curRemovedLines;
 
-            if (linesRemoved % 5 == 0)
-            {
-                if (Interval > 60)
-                    Interval -= 10;
-            }
 
             label1.Text = score.ToString();
             label2.Text = linesRemoved.ToString();

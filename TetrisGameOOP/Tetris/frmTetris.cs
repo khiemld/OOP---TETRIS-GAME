@@ -9,14 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tetris.Controllers;
-using System.Drawing.Drawing2D;
 
 namespace Tetris
 {
-    public partial class Form1 : Form 
+    public partial class frmTetris : Form 
     { 
         public Timer time = new Timer();
-        public Form1()
+        public frmTetris()
         {
             InitializeComponent();
             this.KeyUp += new KeyEventHandler(keyFunc);
@@ -30,7 +29,7 @@ namespace Tetris
             TetrisControl.size = 25;
             TetrisControl.score = 0;
             TetrisControl.linesRemoved = 0;
-            TetrisControl.currentShape = new Shape(3, 0);
+            TetrisControl.currentShape = new Tetromino(3, 0);
             TetrisControl.Interval = time.Interval;
             lbScore.Text = TetrisControl.score.ToString();
             lbLine.Text = TetrisControl.linesRemoved.ToString();
@@ -99,7 +98,7 @@ namespace Tetris
                 TetrisControl.SliceMap(lbScore, lbLine);
                 timer1.Interval = TetrisControl.Interval;
                 TetrisControl.currentShape.ResetShape(3, 0);
-                if (TetrisControl.Collide())
+                if(TetrisControl.Collide())
                 {
                     TetrisControl.ClearMap();
                     timer1.Tick -= new EventHandler(update);
@@ -116,22 +115,11 @@ namespace Tetris
         {
             Graphics g = e.Graphics;
             Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
-            LinearGradientBrush brush = new LinearGradientBrush(rect, Color.Red, Color.White, LinearGradientMode.Vertical);
             TetrisControl.DrawGrid(e.Graphics);
             TetrisControl.DrawMap(e.Graphics);
             SolidBrush blueBrush = new SolidBrush(Color.White);
             TetrisControl.ShowNextShape(e.Graphics);
         }
-
-        private void OnAgainButtonClick(object sender, EventArgs e)
-        {
-            timer1.Tick -= new EventHandler(update);
-            timer1.Stop();
-            TetrisControl.ClearMap();
-            Init();
-        }
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -261,6 +249,16 @@ namespace Tetris
         }
 
         private void lbLine_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

@@ -48,6 +48,7 @@ namespace Tetris
             // 
             // buttonPlay
             // 
+            this.buttonPlay.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlay.Location = new System.Drawing.Point(48, 173);
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(98, 37);
@@ -58,6 +59,7 @@ namespace Tetris
             // 
             // buttonPause
             // 
+            this.buttonPause.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPause.Location = new System.Drawing.Point(183, 172);
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.Size = new System.Drawing.Size(95, 38);
@@ -68,6 +70,7 @@ namespace Tetris
             // 
             // buttonStop
             // 
+            this.buttonStop.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStop.Location = new System.Drawing.Point(316, 172);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(96, 38);
@@ -78,7 +81,7 @@ namespace Tetris
             // 
             // buttonAddMusic
             // 
-            this.buttonAddMusic.Location = new System.Drawing.Point(317, 36);
+            this.buttonAddMusic.Location = new System.Drawing.Point(316, 36);
             this.buttonAddMusic.Name = "buttonAddMusic";
             this.buttonAddMusic.Size = new System.Drawing.Size(94, 116);
             this.buttonAddMusic.TabIndex = 4;
@@ -90,6 +93,7 @@ namespace Tetris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(471, 238);
             this.Controls.Add(this.buttonAddMusic);
             this.Controls.Add(this.buttonStop);

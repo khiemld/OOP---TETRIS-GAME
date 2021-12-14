@@ -29,8 +29,7 @@ namespace Tetris
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.time.Interval = 900;
+            frmTetris form1 = new frmTetris();
             form1.Show();
             this.Visible = false;
         }

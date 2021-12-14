@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    public class Shape
+    public class Tetromino
     {
         private int x;
         private int y;
@@ -71,7 +71,7 @@ namespace Tetris
         };
 
         public int[,] tetr4 = new int[3, 3]{
-            { 4,0,0  },
+            {4,0,0  },
             {4,0,0 },
             {4,4,0 },
         };
@@ -81,7 +81,7 @@ namespace Tetris
         };
 
 
-        public Shape(int _x,int _y)
+        public Tetromino(int _x,int _y)
         {
             x = _x;
             y = _y;
