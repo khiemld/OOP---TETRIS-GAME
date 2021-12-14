@@ -103,6 +103,7 @@ namespace Tetris
                     TetrisControl.ClearMap();
                     timer1.Tick -= new EventHandler(update);
                     timer1.Stop();
+
                     MessageBox.Show("Score: " + TetrisControl.score);
                     Init();
                 }
@@ -197,6 +198,8 @@ namespace Tetris
             timer1.Tick -= new EventHandler(update);
             timer1.Stop();
             TetrisControl.ClearMap();
+            lblLevel.Text = "0";
+            timer1.Interval = 800;
             Init();
         }
 
@@ -261,6 +264,10 @@ namespace Tetris
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmTetris_Leave(object sender, EventArgs e)
+        {
         }
     }
 }

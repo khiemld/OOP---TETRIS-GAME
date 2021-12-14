@@ -31,7 +31,7 @@ namespace Tetris
         {
             frmTetris form1 = new frmTetris();
             form1.Show();
-            this.Visible = false;
+            //this.Visible = false;
         }
 
         private void Form2_Load(object sender, EventArgs e)
